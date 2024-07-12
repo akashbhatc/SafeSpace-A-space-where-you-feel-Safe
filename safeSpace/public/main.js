@@ -36,8 +36,6 @@ socket.on('chat-message', (data) => {
 })
 
 function addMessageToUI(isOwnMessage, data) {
-  clearFeedback();
-
   const displayName = isOwnMessage ? 'you' : data.name;
 
   const messageTime = moment(data.dateTime);

@@ -67,41 +67,6 @@ function addMessageToUI(isOwnMessage, data) {
   });
 }
 
-
-
 function scrollToBottom() {
   messageContainer.scrollTo(0, messageContainer.scrollHeight)
-}
-
-messageInput.addEventListener('focus', (e) => {
-  socket.emit('feedback', {
-    feedback: `✍️ ${nameInput.value} is typing a message`,
-  })
-})
-
-messageInput.addEventListener('keypress', (e) => {
-  socket.emit('feedback', {
-    feedback: `✍️ ${nameInput.value} is typing a message`,
-  })
-})
-messageInput.addEventListener('blur', (e) => {
-  socket.emit('feedback', {
-    feedback: '',
-  })
-})
-
-socket.on('feedback', (data) => {
-  clearFeedback()
-  const element = `
-        <li class="message-feedback">
-          <p class="feedback" id="feedback">${data.feedback}</p>
-        </li>
-  `
-  messageContainer.innerHTML += element
-})
-
-function clearFeedback() {
-  document.querySelectorAll('li.message-feedback').forEach((element) => {
-    element.parentNode.removeChild(element)
-  })
 }
